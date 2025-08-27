@@ -1,5 +1,5 @@
 <template>
-  <div class="booking-form-container" style="background-image: url('/22.png'); background-size: cover;">
+  <div class="booking-form-container m-h-screen" style="background-image: url('/22.png'); background-size: cover;">
     <h1 class="text-3xl font-bold text-center mb-8 bg-slate-500 text-white rounded-r-lg">
       Mavistay Agency
     </h1>
