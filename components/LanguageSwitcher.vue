@@ -23,6 +23,7 @@ const toggleLanguage = () => {
 const checkDarkMode = () => {
   const savedColorMode = localStorage.getItem('colorMode')
   isDarkMode.value = savedColorMode === 'dark'
+  document.documentElement.classList.toggle('dark', isDarkMode.value)
 }
 
 onMounted(() => {

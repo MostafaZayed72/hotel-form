@@ -5,7 +5,7 @@
       <VantaBackground />
     </ClientOnly>
     <NuxtPage />
-    <Footer />
+    <Footer class="fixed bottom-0 w-full"/>
   </div>
 </template>
 
