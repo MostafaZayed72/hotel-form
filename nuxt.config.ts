@@ -2,10 +2,9 @@
 import Aura from '@primevue/themes/aura';
 
 export default defineNuxtConfig({
-  app: {
-    baseURL: '/booking/',   
+app: {
+    baseURL: process.env.NUXT_PUBLIC_BASE_URL || '/'
   },
-
   compatibilityDate: '2024-04-03',
   runtimeConfig: {
     public: {
