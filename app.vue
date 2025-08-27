@@ -4,8 +4,10 @@
     <ClientOnly>
       <VantaBackground />
     </ClientOnly>
-    <NuxtPage />
-    <Footer class="fixed bottom-0 w-full"/>
+   <div class="flex flex-col justify-between gap-10">
+     <NuxtPage />
+    <Footer />
+   </div>
   </div>
 </template>
 
