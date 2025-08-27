@@ -1,5 +1,5 @@
 <template>
-  <footer class="bg-slate-500 text-white py-8 mt-12">
+  <footer class="nav  py-8 mt-12">
     <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
 
       <!-- الشعار -->
@@ -63,10 +63,10 @@ footer a svg {
   transition: color 0.3s;
 }
 
-body nav {
+body .nav {
     background-color: #dbd5d5;
 }
-.dark-mode nav {
+.dark-mode .nav {
     background-color: #0e3250;
 
 }
