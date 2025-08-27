@@ -3,11 +3,11 @@
     <div class="container mx-auto px-4 flex flex-col md:flex-row justify-between items-center gap-6">
 
       <!-- الشعار -->
-      <h2 class="text-2xl font-bold">Mavistay</h2>
+      <h2 class="text-2xl font-bold text-sky-400">Mavistay</h2>
 
       <!-- بيانات التواصل -->
       <div class="text-center md:text-left flex items-center gap-2">
-  <span>Web:</span>
+  <span>{{ $t('Web') }}:</span>
   <a href="https://mavistay.com/" target="_blank" class="text-blue-400 hover:underline flex items-center gap-1">
     <Icon name="mdi:web" class="text-2xl" />
     mavistay.com

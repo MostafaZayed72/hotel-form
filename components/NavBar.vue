@@ -2,8 +2,8 @@
     <nav class="flex justify-between items-center shadow-md py-3 sticky top-0 z-10">
         <!-- LOGO -->
         <div class="mx-5 md:mx-10 ">
-<h1 class="text-sky-400 text-4xl rounded-full text-center cursor-pointer py-1"
-                style="width: 50px; height: 50px; border: 1px solid; border-radius: 50%;">M</h1>        </div>
+      <h2 class="text-2xl font-bold text-sky-400">Mavistay</h2>
+       </div>
         <!-- LINKS IN LARGE SCREEN -->
         <div class="mx-10 hidden lg:block">
             <ul class="flex  items-center font-semibold">
