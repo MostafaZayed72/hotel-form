@@ -6,20 +6,15 @@
       <h2 class="text-2xl font-bold">Mavistay</h2>
 
       <!-- بيانات التواصل -->
-      <div class="space-y-2 text-center md:text-left">
-        <p>
-          WhatsApp: 
-          <a href="https://wa.me/905540172222" target="_blank" class="text-green-400 hover:underline">
-            +90 554 017 22 22
-          </a>
-        </p>
-        <p>
-          Web: 
-          <a href="https://mavistay.com/" target="_blank" class="text-blue-400 hover:underline">
-            www.mavistya.com
-          </a>
-        </p>
-      </div>
+      <div class="text-center md:text-left flex items-center gap-2">
+  <span>Web:</span>
+  <a href="https://mavistay.com/" target="_blank" class="text-blue-400 hover:underline flex items-center gap-1">
+    <Icon name="mdi:web" class="text-2xl" />
+    mavistay.com
+  </a>
+</div>
+
+
 
       <!-- السوشيال ميديا -->
       <div class="flex gap-4">

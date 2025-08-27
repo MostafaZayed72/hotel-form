@@ -2,8 +2,8 @@
     <nav class="flex justify-between items-center shadow-md py-3 sticky top-0 z-10">
         <!-- LOGO -->
         <div class="mx-5 md:mx-10 ">
-           <img src="/public/fe40fc5b-9967-40a5-ac1b-82f69ba48b91.jpeg" alt="" class="w-16 h-16 rounded-full">
-        </div>
+<h1 class="text-sky-400 text-4xl rounded-full text-center cursor-pointer py-1"
+                style="width: 50px; height: 50px; border: 1px solid; border-radius: 50%;">M</h1>        </div>
         <!-- LINKS IN LARGE SCREEN -->
         <div class="mx-10 hidden lg:block">
             <ul class="flex  items-center font-semibold">

@@ -1,26 +1,23 @@
 <template>
   <div class="booking-form-container" style="background-image: url('/22.png'); background-size: cover;">
-      
-
-    <h1 class="text-3xl font-bold text-center mb-8 bg-slate-500  text-white rounded-r-lg">
-     Mavistay
+    <h1 class="text-3xl font-bold text-center mb-8 bg-slate-500 text-white rounded-r-lg">
+      Mavistay Agency
     </h1>
 
     <form @submit.prevent="submitForm" class="p-6 bg-white rounded-lg shadow-lg">
       <div v-if="step === 1">
-        <!-- الاسم -->
         <div class="mb-6">
           <label for="name" class="block text-sm font-bold text-gray-700">{{ $t('Full Name') }}</label>
           <InputText id="name" v-model="form.name" required class="w-full mt-1" />
         </div>
 
-        <!-- الهاتف -->
         <div class="mb-6">
           <label class="block text-sm font-bold text-gray-700">{{ $t('Mobile Number') }}</label>
           <div class="flex space-x-2 rtl:space-x-reverse items-start">
             <AutoComplete v-model="form.countryCode" :suggestions="filteredCountryCodes" optionLabel="name"
               :forceSelection="false" :minLength="0" dropdown @complete="searchCountryCodes"
-              @focus="triggerAllCountries" @dropdown-click="triggerAllCountries" :placeholder="$t('Select Country')" class="w-56">
+              @focus="triggerAllCountries" @dropdown-click="triggerAllCountries" :placeholder="$t('Select Country')"
+              class="w-56">
               <template #option="{ option }">
                 <div class="flex justify-between w-full">
                   <span>{{ option.name }}</span>
@@ -28,25 +25,23 @@
                 </div>
               </template>
             </AutoComplete>
-
-            <InputText v-model="form.phone" :placeholder="$t('Mobile Number')" class="flex-1 p-3 border-gray-300 rounded-md" />
+            <InputText v-model="form.phone" :placeholder="$t('Mobile Number')"
+              class="flex-1 p-3 border-gray-300 rounded-md" />
           </div>
         </div>
 
-        <!-- البريد -->
         <div class="mb-6">
           <label for="email" class="block text-sm font-bold text-gray-700">{{ $t('Email (optional)') }}</label>
           <InputText id="email" v-model="form.email" type="email" class="w-full mt-1" />
         </div>
 
-        <!-- الوجهة -->
         <div class="mb-6">
-          <label class="block text-sm font-bold text-gray-700">{{$t('Destination')}}</label>
-          <div class="mt-2 grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <label class="block text-sm font-bold text-gray-700">{{ $t('Destination') }}</label>
+          <div class="mt-2 flex  gap-4">
             <div v-for="dest in destinationsOptions" :key="dest">
-              <div class="flex items-center">
-                <Checkbox :id="dest" v-model="form.destinations" :value="dest" class="mr-2" />
-                <label :for="dest">{{ dest }}</label>
+              <div class="flex items-center mx-4">
+                <Checkbox :id="dest" v-model="form.destinations" :value="dest" class="mx-1" />
+                <label :for="dest">{{ $t(dest) }}</label>
               </div>
             </div>
           </div>
@@ -57,43 +52,23 @@
         </div>
       </div>
 
-      <!-- Step 2 -->
       <div v-if="step === 2">
-        <!-- اختيار الفنادق -->
         <div class="mb-6">
-  <label class="block text-sm font-bold text-gray-700 mb-2">{{ $t('Hotels') }}</label>
-  <div class="flex gap-4">
-    <Button 
-      :class="form.hotelChoice === 'اقترحوا فنادق' ? 'p-button-primary' : 'p-button-outlined'" 
-      :label="$t('Suggest Hotels')" 
-      @click="form.hotelChoice = 'اقترحوا فنادق'" 
-    />
-    <Button 
-      :class="form.hotelChoice === 'لدي فندق محدد' ? 'p-button-primary' : 'p-button-outlined'" 
-      :label="$t('I have a hotel')" 
-      @click="form.hotelChoice = 'لدي فندق محدد'" 
-    />
-  </div>
-</div>
+          <label class="block text-sm font-bold text-gray-700 mb-2">{{ $t('Hotels') }}</label>
+          <div class="flex gap-4">
+            <Button :class="form.hotelChoice === 'اقترحوا فنادق' ? 'p-button-primary' : 'p-button-outlined'"
+              :label="$t('Suggest Hotels')" @click="form.hotelChoice = 'اقترحوا فنادق'" />
+            <Button :class="form.hotelChoice === 'لدي فندق محدد' ? 'p-button-primary' : 'p-button-outlined'"
+              :label="$t('I have a hotel')" @click="form.hotelChoice = 'لدي فندق محدد'" />
+          </div>
+        </div>
 
-
-        <!-- لو اختار "اقترحوا فنادق" يظهر الانبوت -->
-        <div v-if="form.hotelChoice === 'اقترحوا فنادق'" class="mb-6">
+<div v-if="form.hotelChoice === 'لدي فندق محدد'" class="mb-6">
           <label class="block text-sm font-bold text-gray-700">اختر الفنادق</label>
-          <AutoComplete
-            v-model="form.selectedHotels"
-            :suggestions="filteredHotels"
-            :multiple="true"
-            :forceSelection="false"  
-            :minLength="0"
-            dropdown
-            @complete="searchHotels"
-            @focus="triggerAllHotels"
-            @dropdown-click="triggerAllHotels"
-            @keyup.enter="addCustomHotel"
-            :placeholder="$t('Find a hotel or write a new one')"
-            class="w-full mt-1"
-          >
+          <AutoComplete v-model="form.selectedHotels" :suggestions="filteredHotels" :multiple="true"
+            :forceSelection="false" :minLength="0" dropdown @complete="searchHotels" @focus="triggerAllHotels"
+            @dropdown-click="triggerAllHotels" @keyup.enter="addCustomHotel"
+            :placeholder="$t('Find a hotel or write a new one')" class="w-full mt-1">
             <template #option="{ option }">
               <div class="flex items-center justify-between w-full">
                 <span>{{ option.name }}</span>
@@ -107,7 +82,6 @@
           </AutoComplete>
         </div>
 
-        <!-- التواريخ -->
         <div class="grid grid-cols-2 gap-4 mb-6">
           <div>
             <label for="arrival" class="block text-sm font-bold text-gray-700">{{ $t('Arrival Date') }}</label>
@@ -125,34 +99,59 @@
         </div>
       </div>
 
-      <!-- Step 3 -->
       <div v-if="step === 3">
-        <div class="grid grid-cols-2 gap-4 mb-6">
+        <div class="flex gap-8 mb-6">
           <div>
-            <label for="adults" class="block text-sm font-bold text-gray-700">{{ $t('Number of adults') }}</label>
-            <InputNumber id="adults" v-model="form.adults" showButtons :min="1" class="w-24" />
+            <label for="adults" class="block text-sm font-bold text-gray-700 text-center mx-auto">{{ $t('Number of adults') }}</label>
+            <div class="flex items-center gap-1 mt-1">
+              <button type="button"
+                class="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white hover:bg-gray-700 transition-colors duration-200"
+                @click="form.adults > 1 ? form.adults-- : null">
+                -
+              </button>
+              <span class="text-xl font-semibold">{{ form.adults }}</span>
+              <button type="button"
+                class="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white hover:bg-gray-700 transition-colors duration-200"
+                @click="form.adults++">
+                +
+              </button>
+            </div>
           </div>
           <div>
-            <label for="children" class="block text-sm font-bold text-gray-700">{{ $t('Number of children') }}</label>
-            <InputNumber id="children" v-model="form.children" showButtons :min="0" class="w-24" />
+            <label for="children" class="block text-sm font-bold text-gray-700 mx-auto text-center">{{ $t('Number of children') }}</label>
+            <div class="flex items-center gap-1 mt-1">
+              <button type="button"
+                class="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white hover:bg-gray-700 transition-colors duration-200"
+                @click="form.children > 0 ? form.children-- : null">
+                -
+              </button>
+              <span class="text-xl font-semibold">{{ form.children }}</span>
+              <button type="button"
+                class="flex items-center justify-center w-8 h-8 rounded-full bg-black text-white hover:bg-gray-700 transition-colors duration-200"
+                @click="form.children++">
+                +
+              </button>
+            </div>
           </div>
         </div>
 
-        <!-- أعمار الأطفال -->
         <div v-if="form.children > 0" class="mb-6">
           <label class="block text-sm font-bold text-gray-700">{{ $t('Age of children') }}</label>
-          <div v-for="i in form.children" :key="i" class="mt-2">
-            <InputNumber :placeholder="`${$t('Child Age')} ${i}`" v-model="form.childrenAges[i - 1]" :min="0" :max="17"
-              class="w-24" />
+          <div class="mt-2 grid grid-cols-3 sm:grid-cols-3 md:grid-cols-4 gap-4">
+            <div v-for="i in form.children" :key="i" class="flex flex-col">
+              <label :for="`childAge-${i}`" class="text-sm font-medium text-gray-600 mb-1">{{ $t('Child') }} {{ i
+                }}</label>
+              <input :id="`childAge-${i}`" type="number" v-model="form.childrenAges[i - 1]" :min="0" :max="17"
+                class="w-16 p-1 border rounded-md text-center" />
+            </div>
           </div>
         </div>
 
-        <!-- الخدمات -->
         <div class="mb-6">
           <label class="block text-sm font-bold text-gray-700">{{ $t('Additional services') }}</label>
-          <div class="mt-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div class="mt-2 grid grid-cols-2 sm:grid-cols-2 gap-4">
             <div v-for="service in servicesOptions" :key="service">
-              <div class="flex items-center">
+              <div class="flex items-center gap-1">
                 <Checkbox :id="service" v-model="form.services" :value="service" class="mr-2" />
                 <label :for="service">{{ $t(service) }}</label>
               </div>
@@ -160,9 +159,9 @@
           </div>
         </div>
 
-        <!-- ملاحظات -->
         <div class="mb-6">
-          <label for="notes" class="block text-sm font-bold text-gray-700">{{ $t('Special notes or additional requests') }}</label>
+          <label for="notes" class="block text-sm font-bold text-gray-700">{{ $t('Special notes or additional requests')
+            }}</label>
           <Textarea id="notes" v-model="form.notes" rows="3" class="w-full mt-1" />
         </div>
 
@@ -172,13 +171,13 @@
         </div>
       </div>
 
-      <!-- Step 4 (نجاح) -->
       <div v-if="step === 4" class="text-center mt-8">
         <div class="p-6 bg-green-100 text-green-800 rounded-lg">
           <i class="pi pi-check-circle text-5xl mb-4 text-green-600"></i>
           <p class="text-2xl font-bold mb-2">{{ $t('Thank you for your trust in us') }} 🎉</p>
-          <p class="text-lg">{{$t('Your order has been successfully received. Your order number is')}}: <span class="font-mono text-xl">{{ orderId }}</span></p>
-          <p class="mt-4">{{$t('We will contact you soon')}}</p>
+          <p class="text-lg">{{ $t('Your order has been successfully received. Your order number is') }}: <span
+              class="font-mono text-xl">{{ orderId }}</span></p>
+          <p class="mt-4">{{ $t('We will contact you soon') }}</p>
         </div>
         <a :href="whatsappLink" target="_blank"
           class="inline-block mt-6 px-6 py-3 bg-green-500 text-white font-bold rounded-full shadow-lg hover:bg-green-600 transition-colors">
@@ -199,9 +198,12 @@ const orderId = ref('')
 const loading = ref(false)
 const hotels = ref([])
 
-const destinationsOptions = ['إسطنبول', 'أنطاليا', 'بودروم']
+const destinationsOptions = [
+  ('Istanbul'),
+  ('Antalya'),
+  ('Bodrum')
+]
 const servicesOptions = ['luxuryCar', 'yacht', 'airportTransfer', 'restaurantBooking']
-
 
 const countryCodes = countries
 const filteredCountryCodes = ref([])
