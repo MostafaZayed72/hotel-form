@@ -1,6 +1,6 @@
 <template>
   <div class="booking-form-container " >
-    <h1 class="text-3xl font-bold text-center mb-8 bg-slate-500 text-black rounded-r-lg">
+    <h1 class="text-3xl font-bold text-center mb-8 bg-slate-500 text-white rounded-r-lg">
       Mavistay Agency
     </h1>
 
@@ -313,8 +313,20 @@ const submitForm = async () => {
 
 <style scoped>
 .booking-form-container {
-  max-width: 800px;
-  margin: 4rem auto;
-  font-family: 'Arial', sans-serif;
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden; /* يمنع التمدد على اليمين */
+  box-sizing: border-box;
+  padding: 10px;
+    font-family: 'Arial', sans-serif;
+
 }
+
+.booking-form-container form {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+}
+
 </style>
