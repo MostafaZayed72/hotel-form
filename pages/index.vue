@@ -1,5 +1,5 @@
 <template>
-  <div class="booking-form-container " style="background-image: url('/22.png'); background-size: cover;">
+  <div class="booking-form-container " >
     <h1 class="text-3xl font-bold text-center mb-8 bg-slate-500 text-white rounded-r-lg">
       Mavistay Agency
     </h1>
@@ -278,7 +278,7 @@ const whatsappLink = computed(() => {
 /* إرسال الطلب */
 const submitForm = async () => {
   loading.value = true
-  const scriptUrl = "https://script.google.com/macros/s/AKfycbzJzVXMD87ZPu-sLu0uheRroS1O_T0HE0LnBhT1nIH3jbr2Ae6QBPkcsgEvTvzdsAOe/exec"
+  const scriptUrl = "https://script.google.com/macros/s/AKfycbyqzKurpz31vHzOGiyHJPQbY7xqFbi02uR93stTVdNTnuW0Xh4lSyG4enINNXPcPKy5/exec"
 
   try {
     const formData = new FormData()
