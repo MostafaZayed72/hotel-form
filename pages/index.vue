@@ -1,6 +1,6 @@
 <template>
   <div class="booking-form-container " >
-    <h1 class="text-3xl font-bold text-center mb-8 bg-slate-500 text-white rounded-r-lg">
+    <h1 class="text-3xl font-bold text-center mb-8 bg-slate-500 text-black rounded-r-lg">
       Mavistay Agency
     </h1>
 
