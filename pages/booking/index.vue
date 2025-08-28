@@ -1,5 +1,6 @@
 <template>
-  <div class="booking-form-container " >
+<div class="w-full lg:w-[50%] mx-auto mt-10">
+    <div class="booking-form-container " >
     <h1 class="text-3xl font-bold text-center mb-8 bg-slate-500 text-white rounded-r-lg">
       Mavistay Agency
     </h1>
@@ -186,6 +187,7 @@
       </div>
     </form>
   </div>
+</div>
 </template>
 
 <script setup>
