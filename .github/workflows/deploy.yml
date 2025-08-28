@@ -1,0 +1,38 @@
+name: Build and Deploy Nuxt to FTP
+
+on:
+  push:
+    branches:
+      - main   # run when pushing to main branch
+  workflow_dispatch: # allow manual trigger
+
+jobs:
+  build-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 23
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build Nuxt
+        run: npm run build
+
+      - name: Generate Nuxt
+        run: npm run generate
+
+      - name: FTP Deploy
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
+        with:
+          server: ${{ secrets.FTP_SERVER }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          server-dir: /
+          local-dir: ./.output/public/
